@@ -9,6 +9,9 @@
       "program": "${workspaceFolder}/build/${relativeFileDirname}",
       //"program": "${workspaceFolder}/build/examples/${fileBasenameNoExtension}",
       "args": [],
+      "initCommands": [
+        "settings set target.disable-aslr false"
+      ],
       "cwd": "${workspaceFolder}"
     },
     {
