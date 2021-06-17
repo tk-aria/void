@@ -1,0 +1,22 @@
+BasedOnStyle: LLVM
+IndentWidth: 4
+TabWidth: 4
+AccessModifierOffset: -4
+BreakBeforeBraces: Allman # Linux
+BreakBeforeBinaryOperators: All
+ColumnLimit: 256
+
+NamespaceIndentation: All
+
+DerivePointerAlignment: false
+PointerAlignment: Left
+AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+AllowShortIfStatementsOnASingleLine: false
+
+BinPackArguments: false
+BinPackParameters: false
+
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+BreakConstructorInitializersBeforeComma: true
