@@ -26,6 +26,6 @@ include_directories(${INCLUDE_DIR})
 
 add_subdirectory(external)
 add_subdirectory(src)
-if (NOT DEFINED WITHOUT_EXAMPLE)
-    add_subdirectory(examples)
+if (NOT DEFINED WITHOUT_SANDBOX)
+    add_subdirectory(sandbox)
 endif()
