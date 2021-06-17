@@ -1,0 +1,29 @@
+[*.code-workspace]
+root = true
+charset = utf-8-bom
+end_of_line = lf
+indent_style = space
+indent_size = 4
+tab_width = 4
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+[Makefile]
+root = true
+charset = utf-8-bom
+end_of_line = lf
+indent_style = tab
+indent_size = 4
+tab_width = 4
+trim_trailing_whitespace = true
+insert_final_newline = false
+
+[*.{json}]
+root = true
+charset = utf-8-bom
+end_of_line = lf
+indent_style = space
+indent_size = 4
+tab_width = 4
+trim_trailing_whitespace = true
+insert_final_newline = false
