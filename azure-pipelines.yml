@@ -1,0 +1,209 @@
+# azure-pipelines.yml
+#
+# help:
+#   - vmImage: https://docs.microsoft.com/en-us/azure/devops/pipelines/agents/hosted?view=azure-devops
+#
+
+trigger:
+- master
+
+jobs:
+  # Doxygen.
+  - template: .azure-pipelines/doxygen.yml
+    parameters:
+      doxygenPath: Documents
+
+  # Windows.
+  - job: windows_build
+    displayName: Build Windows
+    pool:
+      vmImage : windows-latest
+    steps:
+    - task: CMake@1
+      displayName: 'cmake version'
+      inputs:
+        cmakeArgs: >
+            --version
+
+    - task: CMake@1
+      displayName: 'cmake configure'
+      inputs:
+        cmakeArgs: >
+            -DCMAKE_USE_RELATIVE_PATHS=ON
+            -DCMAKE_INSTALL_PREFIX=$(Build.ArtifactStagingDirectory)
+            $(Build.SourcesDirectory)
+
+    - task: CMake@1
+      displayName: 'cmake install'
+      inputs:
+        cmakeArgs: >
+             --build ./
+             --target install
+             --config Release
+  
+    - task: PublishBuildArtifacts@1
+      displayName: 'postprocess: binary artifact'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'download'
+        publishLocation: 'Container'
+  
+    - task: PublishBuildArtifacts@1
+      displayName: 'postprocess: project artifact'
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)'
+        ArtifactName: 'project'
+        publishLocation: 'Container'
+
+  # MacOS.
+  - job: macos_build
+    displayName: Build OSX
+    pool:
+      vmImage: 'macos-latest'
+    steps:
+    - task: CMake@1
+      displayName: 'cmake version'
+      inputs:
+        cmakeArgs: >
+            --version
+
+    - task: CMake@1
+      displayName: 'cmake configure'
+      inputs:
+        cmakeArgs: >
+            -DCMAKE_INSTALL_PREFIX=$(Build.ArtifactStagingDirectory)
+            $(Build.SourcesDirectory)
+
+    - task: CMake@1
+      displayName: 'cmake install'
+      inputs:
+        cmakeArgs: >
+             --build ./
+             --target install
+             --config Release
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: download'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'download'
+        publishLocation: 'Container'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'postprocess: project artifact'
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)'
+        ArtifactName: 'project'
+        publishLocation: 'Container'
+
+  # Linux.
+  - job: linux_build
+    displayName: Build Linux
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: CMake@1
+      displayName: 'cmake version'
+      inputs:
+        cmakeArgs: >
+            --version
+
+    - task: CMake@1
+      displayName: 'cmake configure'
+      inputs:
+        cmakeArgs: >
+            -DCMAKE_INSTALL_PREFIX=$(Build.ArtifactStagingDirectory)
+            $(Build.SourcesDirectory)
+
+    - task: CMake@1
+      displayName: 'cmake install'
+      inputs:
+        cmakeArgs: >
+             --build ./
+             --target install
+             --config Release
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: download'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'download'
+        publishLocation: 'Container'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'postprocess: project artifact'
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)'
+        ArtifactName: 'project'
+        publishLocation: 'Container'
+
+  # Android.
+  #   help:
+  #    (https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/android?view=azure-devops)
+  - job: android_build
+    displayName: Build Android (NDK)
+    pool:
+      vmImage: 'macos-latest'
+    steps:
+    - checkout: self
+      fetchDepth: 1
+      submodules: recursive
+    - task: CmdLine@2
+      displayName: Download Library
+      inputs:
+        script: |
+          mkdir build_android && cd build_android
+          cmake .. -DCMAKE_TOOLCHAIN_FILE=$(ANDROID_HOME)/android-ndk-r15c/build/cmake/android.toolchain.cmake -DCMAKE_INSTALL_PREFIX=../Binary
+          cmake --build . --config Release --target install
+
+  # iOS.
+  # error: iOS_Development~ (https://github.com/leetal/ios-cmake/issues/56)
+  - job: ios_build
+    displayName: Build iOS
+    pool:
+      vmImage: 'macos-latest'
+    steps:
+    - checkout: self
+      fetchDepth: 1
+      submodules: recursive
+
+    - task: CmdLine@2
+      inputs:
+        script: |
+          mkdir build_ios && cd build_ios
+          cmake ../ -G Xcode -DCMAKE_INSTALL_PREFIX=../Binary -DCMAKE_TOOLCHAIN_FILE=../.cmake/iOS/ios.toolchain.cmake -DPLATFORM=OS64COMBINED && cmake --build . --config Release --target install || exit 0
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'postprocess: project artifact'
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/Binary'
+        ArtifactName: 'project'
+        publishLocation: 'Container'
+
+  # HTML5 MacOS.
+  - job: html5_build_mac
+    displayName: Build HTML5 WebAssembly(lib) Build (MacOS)
+    pool:
+      vmImage : macos-latest
+    steps:
+    - checkout: self
+      fetchDepth: 1
+      submodules: recursive
+
+    - template: .azure-pipelines/emscripten.yml
+      parameters:
+        cmakeArgs: cmake ../ -DCMAKE_INSTALL_PREFIX=$(Build.ArtifactStagingDirectory)
+  
+    - task: PublishBuildArtifacts@1
+      displayName: 'postprocess: binary artifact'
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'download'
+        publishLocation: 'Container'
+  
+    - task: PublishBuildArtifacts@1
+      displayName: 'postprocess: project artifact'
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)'
+        ArtifactName: 'project'
+        publishLocation: 'Container'
