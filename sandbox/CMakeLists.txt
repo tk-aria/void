@@ -6,7 +6,7 @@
 ##
 
 file(GLOB DEMO_SRC
-    ${PROJECT_SOURCE_DIR}/examples/demo/*.cpp
+    ${PROJECT_SOURCE_DIR}/sandbox/demo/*.cpp
 )
 
 add_executable(demo ${DEMO_SRC})
