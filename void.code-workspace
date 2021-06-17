@@ -1,0 +1,15 @@
+{
+    "folders": [
+        {
+            "name": "void",
+            "path": "./"
+        }
+    ],
+    "settings": {},
+    "extensions": {
+        "recommendations": [
+            "ms-vscode-remote.vscode-remote-extension",
+            "ms-vsliveshare.vsliveshare"
+        ]
+    }
+}
