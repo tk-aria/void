@@ -1,0 +1,27 @@
+{
+  "name": "void-dev",
+  "remoteUser": "root",
+  "context": "..",
+  "dockerFile": "./images/Dockerfile",
+  "postCreateCommand": "make setup",
+  "settings": {
+    "terminal.integrated.shell.linux": "/usr/bin/fish",
+    "clangd.path": "/usr/bin/clangd",
+    "lldb.executable": "/usr/bin/lldb",
+    "clang-format.executable": "/usr/bin/clang-format"
+  },
+  "extensions": [
+    "ms-vscode.cpptools",
+    "llvm-vs-code-extensions.vscode-clangd",
+    "xaver.clang-format",
+    "vadimcn.vscode-lldb",
+    "editorconfig.editorconfig",
+    "cschlosser.doxdocgen",
+    "twxs.cmake",
+    "ms-vscode.cmake-tools",
+    "ms-vscode.makefile-tools",
+    "rreverser.llvm",
+    "alanwalk.markdown-toc",
+    "sukumo28.wav-preview"
+  ]
+}
