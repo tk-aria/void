@@ -1,0 +1,21 @@
+{
+    "C_Cpp.autocomplete": "Disabled",
+    "C_Cpp.formatting": "Disabled",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "[cpp]": {
+        "editor.formatOnType": false,
+        "editor.formatOnSave": true
+    },
+    "clangd.arguments": [
+        "--compile-commands-dir='./build'",
+        "--clang-tidy",
+        "--log=verbose",
+        "--offset-encoding=utf-8"
+    ],
+    "clangd.semanticHighlighting": true,
+    "files.associations": {
+        "*.code-workspace": "json",
+        "*.code-snippets": "json",
+        "*.command": "shellscript"
+    }
+}

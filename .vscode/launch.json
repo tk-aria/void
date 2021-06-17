@@ -1,0 +1,22 @@
+{
+  // vscode-lldb manual about https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "lldb launch Debug from filename",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/${relativeFileDirname}",
+      //"program": "${workspaceFolder}/build/examples/${fileBasenameNoExtension}",
+      "args": [],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "lldb process Debug",
+      "type": "lldb",
+      "request": "attach",
+      //"program": "${workspaceFolder}/build/${relativeFileDirname}",
+      "pid": "${command:pickMyProcess}",
+    }
+  ]
+}
