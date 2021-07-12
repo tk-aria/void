@@ -9,6 +9,7 @@
     "extensions": {
         "recommendations": [
             "ms-vscode-remote.vscode-remote-extension",
+            "github.remotehub",
             "ms-vsliveshare.vsliveshare"
         ]
     }
