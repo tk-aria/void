@@ -32,7 +32,12 @@ build: clear
 
 .PHONY: format ## [category]`description`.
 format:
-	clang-format -i ./**/*.cpp ./**/*.h ./**/*.hpp
+	clang-format -i \
+		./**/*.cpp \
+		./**/*.h \
+		.*/**/*.cpp \
+		.*/**/*.h
+#	./**/*.hpp
 
 .PHONY: lint ## [category]`description`.
 lint:
