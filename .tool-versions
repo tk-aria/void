@@ -1,0 +1,5 @@
+cmake
+ninja
+ccache
+shfmt
+shellcheck
