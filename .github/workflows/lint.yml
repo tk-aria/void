@@ -11,10 +11,10 @@ jobs:
     - uses: actions/checkout@v2
 
     # Optionally generate compile_commands.json
-
     - uses: ZedThree/clang-tidy-review@v0.7.0
       id: review
       with:
+        clang_tidy_version: 11
         ## List of packages to install
         #apt_packages: liblapack-dev
         # CMake command to run in order to generate compile_commands.json
