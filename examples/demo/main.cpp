@@ -20,9 +20,9 @@ const char* kMessage = "Hello World!";
 
 int main(int argc, char** argv)
 {
-char buf[128];
-  memcpy(buf, kMessage, sizeof(kMessage));
-  puts(buf);
+    char buf[128];
+    memcpy(buf, kMessage, sizeof(kMessage));
+    puts(buf);
 
     printf("[echo]: %s %s", echo_helloworld(), VOID_NEWLINE);
     return 0;

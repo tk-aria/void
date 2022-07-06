@@ -11,9 +11,9 @@
 
 #include "void/common.h"
 
-                    #include "helloworld.h"
+#include "helloworld.h"
 
-                    const char* echo_helloworld(void)
-                    {
-                        return "Hello World!!";
-                    }
+const char* echo_helloworld(void)
+{
+    return "Hello World!!";
+}
