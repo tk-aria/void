@@ -28,7 +28,7 @@ setup: git_init build
 .PHONY: build ## [category]`description`.
 build: clear
 	mkdir build && cd build && \
-	cmake ../ -DCMAKE_BUILD_TYPE=Debug && ../bin/scripts/makerunner.sh
+	CC=/usr/lib/ccache/gcc CXX=/usr/lib/ccache/g++ cmake ../ -DCMAKE_BUILD_TYPE=Debug && ../bin/scripts/makerunner.sh
 
 .PHONY: format ## [category]`description`.
 format:
