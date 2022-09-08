@@ -11,27 +11,42 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # https://github.com/asdf-vm/actions
-    - name: asdf_install
-      uses: asdf-vm/actions/install@v1
+    - name: setup asdf
+      uses: asdf-vm/actions/setup@v1
 
-    #- name: Setup cmake
-    #  uses: jwlawson/actions-setup-cmake@v1.12
-    #  with:
-    #    cmake-version: '3.22.x'
+    - name: plugin add asdf
+      uses: asdf-vm/actions/plugins-add@v1
+
+    - name: install ninja using asdf
+      run: |
+        asdf install ninja 1.11.1
+
+    ## https://github.com/asdf-vm/actions
+    #- name: asdf_install
+    #  uses: asdf-vm/actions/install@v1
+
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: '3.22.x'
 
     - name: Tool Version
       run: |
         cmake --version
+    #    ninja --version
 
     - run: mkdir -p tmp
 
     - name: dryrun CMake
       working-directory: tmp
       run: |
-        cmake ../ -G Ninja
-        cmake --build . -- -n
+        cmake ..
+        make
 
-    - name: dryrun CMake 2
-      working-directory: tmp
-      run: cmake --build . -- -n
+    - run: mkdir -p tmp2
+
+    - name: dryrun CMake with ninja
+      working-directory: tmp2
+      run: |
+        cmake .. -G Ninja
+        cmake --build . -- -n
