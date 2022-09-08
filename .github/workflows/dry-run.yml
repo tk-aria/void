@@ -11,19 +11,26 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup cmake
-      uses: jwlawson/actions-setup-cmake@v1.12
-      with:
-        cmake-version: '3.22.x'
+    # https://github.com/asdf-vm/actions
+    - name: asdf_install
+      uses: asdf-vm/actions/install@v1
 
-    - name: CMake Version
-      run: cmake --version
+    #- name: Setup cmake
+    #  uses: jwlawson/actions-setup-cmake@v1.12
+    #  with:
+    #    cmake-version: '3.22.x'
+
+    - name: Tool Version
+      run: |
+        cmake --version
 
     - run: mkdir -p tmp
 
     - name: dryrun CMake
       working-directory: tmp
-      run: cmake ../
+      run: |
+        cmake ../ -G Ninja
+        cmake --build . -- -n
 
     - name: dryrun CMake 2
       working-directory: tmp
