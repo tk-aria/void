@@ -1,14 +1,47 @@
 ---
 name: Build Using CMake
 on:
-  push:
-    branches:
-      - main
-      - 'releases/**'
+ push:
+   branches:
+     - main
+     - 'releases/**'
 
-jobs:
+ jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: setup asdf
+      uses: asdf-vm/actions/setup@v1
+
+    - name: plugin add asdf
+      uses: asdf-vm/actions/plugins-add@v1
+
+    - name: install ninja using asdf
+      run: |
+        asdf install ninja 1.11.1
+
+    # TODO
+    ## https://github.com/asdf-vm/actions
+    #- name: asdf_install
+    #  uses: asdf-vm/actions/install@v1
+
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.12
+      with:
+        cmake-version: '3.22.x'
+
+    - name: Tool Version
+      run: |
+        cmake --version
+        ninja --version
+
+    - run: mkdir -p tmp
+
+    - name: Build using CMake
+      working-directory: tmp
+      run: |
+        cmake ..
+        make
