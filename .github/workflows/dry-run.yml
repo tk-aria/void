@@ -23,4 +23,8 @@ jobs:
 
     - name: dryrun CMake
       working-directory: tmp
-      run: cmake ../ && cmake --build . -- -n
+      run: cmake ../
+
+    - name: dryrun CMake 2
+      working-directory: tmp
+      run: cmake --build . -- -n
