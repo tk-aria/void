@@ -1,0 +1,23 @@
+---
+name: analyzer cxx files using infer
+on:
+- pull_request
+- workflow_dispatch
+
+jobs:
+  infer:
+    runs-on: ubuntu-latest
+    needs: prepare
+    steps:
+      - uses: actions/checkout@v2
+
+#      - uses: srz-zumix/setup-infer@v1
+#
+#      - name: infer
+#        run: |
+#          infer -- make
+#
+#      - name: Check Infer report
+#        uses: srz-zumix/reviewdog-action-infer@v1
+#        with:
+#          reporter: github-pr-review
