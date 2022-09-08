@@ -1,0 +1,5 @@
+cmake 3.22.2
+ninja 1.11.1
+ccache 4.6.3
+shfmt 3.5.1
+shellcheck 0.8.0
