@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "ms-vscode.cpptools",
+    "llvm-vs-code-extensions.vscode-clangd",
+    "xaver.clang-format",
+    "vadimcn.vscode-lldb",
+    "editorconfig.editorconfig",
+    "cschlosser.doxdocgen",
+    "twxs.cmake",
+    "ms-vscode.cmake-tools",
+    "ms-vscode.makefile-tools",
+
+    // devcontainer.
+    "ms-vscode-remote.vscode-remote-extension",
+    "github.remotehub",
+    "ms-vsliveshare.vsliveshare"
+  ],
+  "unwantedRecommendations": [
+
+  ]
+}
