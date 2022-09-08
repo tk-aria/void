@@ -1,5 +1,5 @@
 ---
-name: dryrun CMake
+name: Build Using CMake
 on:
   push:
     branches:
