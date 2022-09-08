@@ -21,6 +21,7 @@ jobs:
       run: |
         asdf install ninja 1.11.1
 
+    # TODO
     ## https://github.com/asdf-vm/actions
     #- name: asdf_install
     #  uses: asdf-vm/actions/install@v1
@@ -33,20 +34,12 @@ jobs:
     - name: Tool Version
       run: |
         cmake --version
-    #    ninja --version
+        ninja --version
 
     - run: mkdir -p tmp
 
     - name: dryrun CMake
       working-directory: tmp
-      run: |
-        cmake ..
-        make
-
-    - run: mkdir -p tmp2
-
-    - name: dryrun CMake with ninja
-      working-directory: tmp2
       run: |
         cmake .. -G Ninja
         cmake --build . -- -n
