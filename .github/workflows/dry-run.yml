@@ -23,4 +23,4 @@ jobs:
 
     - name: dryrun CMake
       working-directory: tmp
-      run: cmake -G Ninja ../ && cmake --build . -- -n
+      run: cmake ../ && cmake --build . -- -n
