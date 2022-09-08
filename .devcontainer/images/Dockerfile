@@ -6,7 +6,6 @@ RUN apt update
 RUN apt install -y tzdata
 
 RUN apt install -y vim \
-    git \
     fish \
     wget \
     make \

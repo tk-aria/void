@@ -4,8 +4,17 @@
   "context": "..",
   "dockerFile": "./images/Dockerfile",
   "postCreateCommand": "make setup",
+  "features": {
+    "git": {
+      "version": "latest"
+    },
+    "docker-from-docker": {
+      "version": "latest"
+    }
+  },
   "settings": {
     "terminal.integrated.shell.linux": "/usr/bin/fish",
+    "terminal.integrated.defaultProfile.linux": "fish",
     "clangd.path": "/usr/bin/clangd",
     "lldb.executable": "/usr/bin/lldb",
     "clang-format.executable": "/usr/bin/clang-format"
