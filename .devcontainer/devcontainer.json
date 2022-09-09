@@ -18,11 +18,15 @@
       "version": "latest"
     }
   },
+  //"runArgs": [
+  //  "--network=host"
+  //],
   "settings": {
     "terminal.integrated.shell.linux": "/usr/bin/fish",
     "terminal.integrated.defaultProfile.linux": "fish",
     "clangd.path": "/usr/bin/clangd",
     "lldb.executable": "/usr/bin/lldb",
+    "C_Cpp.codeAnalysis.clangTidy.path": "/usr/bin/clang-tidy",
     "clang-format.executable": "/usr/bin/clang-format"
   },
   "extensions": [
