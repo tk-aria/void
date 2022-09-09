@@ -17,5 +17,9 @@
         "*.code-workspace": "json",
         "*.code-snippets": "json",
         "*.command": "shellscript"
-    }
+    },
+
+    // clang-tidy about (https://devblogs.microsoft.com/cppblog/visual-studio-code-c-december-2021-update-clang-tidy/)
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "C_Cpp.codeAnalysis.runAutomatically": true
 }
