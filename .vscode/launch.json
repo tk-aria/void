@@ -1,7 +1,19 @@
 {
   // vscode-lldb manual about https://github.com/vadimcn/vscode-lldb/blob/master/MANUAL.md
+  // https://github.com/microsoft/vscode-cmake-tools/blob/main/docs/debug-launch.md#debug-using-a-launchjson-file
   "version": "0.2.0",
   "configurations": [
+    {
+      "name": "Build CMake then launch debug (lldb)",
+      "type": "lldb",
+      "request": "launch",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": [],
+      "initCommands": [
+        "settings set target.disable-aslr false"
+      ],
+      "cwd": "${workspaceFolder}"
+    },
     {
       "name": "lldb launch Debug from filename",
       "type": "lldb",
