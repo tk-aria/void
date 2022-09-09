@@ -2,7 +2,13 @@
   "name": "void-dev",
   "remoteUser": "root",
   "context": "..",
-  "dockerFile": "./images/Dockerfile",
+  "dockerFile": "../Dockerfile",
+  "build": {
+    "target": "devel",
+    "args": {
+      "network": "Host"
+    }
+  },
   "postCreateCommand": "make setup",
   "features": {
     "git": {

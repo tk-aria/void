@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04 as builder
 
 RUN apt update
 #RUN apt upgrade -y
@@ -34,3 +34,8 @@ RUN apt-get install -y swig
 RUN apt-get install -y build-essential libgl1-mesa-dev libglu1-mesa-dev
 
 #RUN make setup
+
+FROM builder as docs
+FROM builder as prod
+FROM builder as devel
+FROM builder as devel-gpu
