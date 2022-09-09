@@ -10,6 +10,9 @@
     "ms-vscode.cmake-tools",
     "ms-vscode.makefile-tools",
 
+    // recommend.
+    "christian-kohler.path-intellisense",
+
     // devcontainer.
     "ms-vscode-remote.vscode-remote-extension",
     "github.remotehub",
