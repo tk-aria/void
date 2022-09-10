@@ -13,7 +13,7 @@ PROJECT_NAME           = "void"
 PROJECT_NUMBER         = 0.1.0
 PROJECT_BRIEF          =
 PROJECT_LOGO           =
-OUTPUT_DIRECTORY       = ./docs
+OUTPUT_DIRECTORY       = ./
 CREATE_SUBDIRS         = YES
 ALLOW_UNICODE_NAMES    = NO
 OUTPUT_LANGUAGE        = English
@@ -106,7 +106,7 @@ SHOW_FILES             = YES
 SHOW_NAMESPACES        = YES
 FILE_VERSION_FILTER    =
 # TODO: CMake variable
-LAYOUT_FILE            = "docs/generator/DoxygenLayout.xml"
+LAYOUT_FILE            = "generator/DoxygenLayout.xml"
 CITE_BIB_FILES         =
 #---------------------------------------------------------------------------
 # Configuration options related to warning and progress messages
@@ -123,9 +123,9 @@ WARN_LOGFILE           =
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
 # TODO: CMake variable
-INPUT                  = src \
-                         include \
-                         examples
+INPUT                  = ../src \
+                         ../include \
+                         ../examples
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.c \
                          *.cc \
@@ -178,7 +178,7 @@ EXCLUDE_SYMLINKS       = NO
 EXCLUDE_PATTERNS       =
 EXCLUDE_SYMBOLS        =
 # TODO: CMake variable
-EXAMPLE_PATH           = examples
+EXAMPLE_PATH           = ../examples
 EXAMPLE_PATTERNS       = *
 EXAMPLE_RECURSIVE      = NO
 IMAGE_PATH             =
@@ -217,13 +217,13 @@ GENERATE_HTML          = YES
 HTML_OUTPUT            = html
 HTML_FILE_EXTENSION    = .html
 # TODO: CMake variable
-HTML_HEADER            = "docs/doxygen-awesome-css/doxygen-custom/header.html"
+HTML_HEADER            = "doxygen-awesome-css/doxygen-custom/header.html"
 # TODO: CMake variable
 HTML_FOOTER            =
 # TODO: CMake variable
 HTML_STYLESHEET        =
 # TODO: CMake variable
-HTML_EXTRA_STYLESHEET  = "docs/doxygen-awesome-css/doxygen-awesome.css"
+HTML_EXTRA_STYLESHEET  = "doxygen-awesome-css/doxygen-awesome.css"
 HTML_EXTRA_FILES       =
 HTML_COLORSTYLE_HUE    = 220
 HTML_COLORSTYLE_SAT    = 100
