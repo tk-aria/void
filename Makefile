@@ -43,7 +43,7 @@ format:
 lint:
 	clang-tidy --fix-errors -p ./build -header-filter="/workspaces/naudio/include" ./src/**/*.cpp
 
-.PHONY: documents ## [category]`description`.
-documents:
-	doxygen
+.PHONY: docs ## [category]`description`.
+docs:
+	cd docs && doxygen
 
